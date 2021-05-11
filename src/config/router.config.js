@@ -267,6 +267,12 @@ export const asyncRouterMap = [
             ]
           }
         ]
+      },
+      {
+        path: '/vote',
+        name: 'Vote',
+        component: () => import('@/views/vote/vote'),
+        meta: { title: 'vote', icon: 'user', keepAlive: true, permission: ['user'] }
       }
 
       // other
