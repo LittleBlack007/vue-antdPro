@@ -30,7 +30,7 @@ export default ({
       }
       console.log(seatCol)
       for(let i=0;i<arr[0];i++){
-        seatArr.push(seatCol);
+        seatArr.push([...seatCol]);
       }
       console.log(seatArr)
       return seatArr;

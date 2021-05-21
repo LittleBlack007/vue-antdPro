@@ -1,8 +1,9 @@
 
 <template>
-  <div class='container' @click="onClick">
-    <div v-for='(row,index) in this.seats'>
-      <input v-for='(col,i) in row' type="checkbox" :id="[index,i]" :checked='col === 1'/>
+  <div class='container' @click="onClick"  @mousedown="this.show_coords">
+    <div>test props{{typeof this.test}}</div>
+    <div v-for='(row,index) in this.seats' :id="index" >
+      <input v-for='(col,i) in row' type="checkbox" :id="[index,i]" :checked='col === 1' :style="{left:40*i+20+'px',top:40*index+20+'px',position: 'absolute'}" />
     </div>
   </div>
 </template>
@@ -21,7 +22,8 @@ export default ({
   },
   props:{
     seats:Array,
-    onSubmit:Function
+    onSubmit:Function,
+    test:String,
   },
   computed:{
     
@@ -45,6 +47,7 @@ export default ({
       result.selectedSeats = this.selectedSeats;
       result.seats = this.seats;
       this.$emit('onSubmit',result)
+      
     },
     initSeat(){
       let arr =  this.allSeat
@@ -55,11 +58,20 @@ export default ({
       }
       console.log(seatCol)
       for(let i=0;i<arr[0];i++){
-        seatArr.push(seatCol);
+        seatArr.push(seatCol.slice(0));
       }
       console.log(seatArr)
       return seatArr;
     },
+    show_coords(event){
+      console.log(event)
+      x=event.clientX
+      y=event.clientY
+      alert("X 坐标: " + x + ", Y 坐标: " + y)
+    }
+  },
+  created(){
+    
   },
   mounted(){
     if(this.seats.length > 0){
@@ -72,19 +84,13 @@ export default ({
       })
     }
     console.log('mounted',this.seats)
-  },
-
-  setup() {
-    
-  },
-
-
-
+  }
 })
 </script>
 
 <style lang="less" scoped>
 .container{
+  position: relative;
   width: 100%;
   height: 100%;
   min-height: 800px;

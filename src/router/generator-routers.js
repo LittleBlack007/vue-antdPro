@@ -53,8 +53,11 @@ const constantRouterComponents = {
   'NotificationSettings': () => import('@/views/account/settings/Notification'),
 
   // vote
-  'Vote': () => import('@/views/vote')
-
+  'Vote': () => import('@/views/vote/vote'),
+  
+  // activated
+  'Activated': () => import('@/views/activated/activated')
+  
   // 'TestWork': () => import(/* webpackChunkName: "TestWork" */ '@/views/dashboard/TestWork')
 }
 

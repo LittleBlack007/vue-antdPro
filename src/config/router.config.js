@@ -13,13 +13,13 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/activated',
     children: [
       // dashboard
       {
         path: '/dashboard',
         name: 'dashboard',
-        redirect: '/dashboard/workplace',
+        redirect: '/vote',
         component: RouteView,
         meta: { title: 'menu.dashboard', keepAlive: true, icon: bxAnaalyse, permission: ['dashboard'] },
         children: [
@@ -273,6 +273,12 @@ export const asyncRouterMap = [
         name: 'Vote',
         component: () => import('@/views/vote/vote'),
         meta: { title: 'vote', icon: 'user', keepAlive: true, permission: ['user'] }
+      },
+      {
+        path: '/activated',
+        name: 'Activated',
+        component: () => import('@/views/activated/activated'),
+        meta: { title: 'activated', icon: 'user', keepAlive: true, permission: ['user'] }
       }
 
       // other
